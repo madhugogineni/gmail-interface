@@ -42,7 +42,10 @@
         .compose-button {
             border-radius: 20px;
             padding-left: 10px;
-
+        }
+        .custom-button {
+            background: white !important;
+            color: black !important;
         }
     </style>
 </head>
@@ -56,14 +59,16 @@
         };
         var composeButton = {
             view: "button",
-            type: "iconButton",
-            icon: "fas fa-home",
-            label: "Edit",
-            css: "compose-button",
-            gravity: 0.5
+            type: "icon",
+            icon: "fas fa-plus",
+            label: "Compose",
+            css: "button_raised",
+            height: 50,
+            inputWidth: 120
         };
         var leftnavbarlist = {
             view: "tree",
+            borderless: true,
             template: "{common.icon()}<div class='list-item'><span class='webix_icon wxi-pencil' />&nbsp;&nbsp;&nbsp;#value#</div>",
             select: true,
             data: [
@@ -86,8 +91,33 @@
                 },
             ]
         };
-        var leftnavbar = { rows: [composeButton, leftnavbarlist], gravity: 0.2, css: "leftside-bar" };
-        var mainbody = { template: "Main Body", gravity: 0.80, css: "main-body" };
+        var primarybody = { template: "welcome" };
+        var socialbody = { template: "social" };
+        var promotionsbody = { template: "promotions" };
+        var updatesbody = { template: "updates" };
+        var leftnavbar = { rows: [composeButton, leftnavbarlist], gravity: 0.2, borderless: true, css: "leftside-bar", padding: 10, margin: 10 };
+        var mainbody = {
+            view: "tabview",
+            gravity: 0.80,
+            cells: [
+                {
+                    header: "Primary",
+                    body: { rows: [primarybody] }
+                },
+                {
+                    header: "Social",
+                    body: { rows: [socialbody] }
+                },
+                {
+                    header: "Promotions",
+                    body: { rows: [promotionsbody] }
+                },
+                {
+                    header: "Updates",
+                    body: { rows: [updatesbody] }
+                },
+            ]
+        };
         var rightnavbar = { template: "RightSide menu", gravity: 0.05, css: "rightside-bar" };
         var body = {
             cols: [
