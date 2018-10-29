@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css">
+    <script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+    <style>
+        .app-header {}
+
+        .leftside-bar {
+            width: 10%;
+        }
+
+        .main-body {
+            width: 80%;
+        }
+
+        .rightside-bar {
+            width: 5%;
+        }
+
+        .space {
+            padding-left: 20%;
+        }
+
+        .list-item {
+            border-top-right-radius: 5%;
+            border-bottom-right-radius: 5%;
+            padding-left: 30px;
+        }
+
+        .list-item:hover {
+            background: #FCE7E5;
+        }
+
+        .right-margin {
+            padding-right: 10px;
+        }
+
+        .compose-button {
+            border-radius: 20px;
+            padding-left: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" charset="utf-8">
+        var header = {
+            template: "Header1",
+            height: 62,
+            css: "app-header"
+        };
+        var composeButton = {
+            view: "button",
+            type: "iconButton",
+            icon: "fas fa-home",
+            label: "Edit",
+            css: "compose-button",
+            gravity: 0.5
+        };
+        var leftnavbarlist = {
+            view: "tree",
+            template: "{common.icon()}<div class='list-item'><span class='webix_icon wxi-pencil' />&nbsp;&nbsp;&nbsp;#value#</div>",
+            select: true,
+            data: [
+                { id: "1", value: "Inbox" },
+                { id: "2", value: "Starred" },
+                { id: "3", value: "Snoozed" },
+                { id: "4", value: "Sent" },
+                { id: "5", value: "Drafts" },
+                { id: "6", value: "Important" },
+                { id: "7", value: "Chats" },
+                { id: "8", value: "All Mails" },
+                { id: "9", value: "Spam" },
+                { id: "10", value: "Trash" },
+                {
+                    id: "11", open: true, value: "Categories", data: [
+                        { id: "11.1", value: "Avalon" },
+                        { id: "11.2", value: "Corolla" },
+                        { id: "11.3", value: "Camry" }
+                    ]
+                },
+            ]
+        };
+        var leftnavbar = { rows: [composeButton, leftnavbarlist], gravity: 0.2, css: "leftside-bar" };
+        var mainbody = { template: "Main Body", gravity: 0.80, css: "main-body" };
+        var rightnavbar = { template: "RightSide menu", gravity: 0.05, css: "rightside-bar" };
+        var body = {
+            cols: [
+                leftnavbar,
+                mainbody,
+                rightnavbar
+            ]
+        };
+        webix.ui({
+            rows: [
+                header,
+                body
+            ]
+        })
+    </script>
+</body>
+
+</html>
