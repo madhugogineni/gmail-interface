@@ -9,53 +9,297 @@
     <style>
         .app-header {}
 
-        .leftside-bar {
-            width: 10%;
-        }
-
-        .main-body {
-            width: 80%;
-        }
-
         .rightside-bar {
             width: 5%;
-        }
-
-        .space {
-            padding-left: 20%;
         }
 
         .list-item {
             border-top-right-radius: 5%;
             border-bottom-right-radius: 5%;
-            padding-left: 30px;
         }
 
         .list-item:hover {
             background: #FCE7E5;
         }
 
-        .right-margin {
-            padding-right: 10px;
-        }
-
         .compose-button {
             border-radius: 20px;
             padding-left: 10px;
         }
+
         .custom-button {
             background: white !important;
             color: black !important;
+        }
+
+        .webix_item_tab .mainbody-inbox-header,
+        .mainbody-social-header,
+        .mainbody-promotions-header,
+        .mainbody-updates-header {
+            color: #696969;
+            text-align: left;
+            padding-left: 8px;
+        }
+
+        .webix_item_tab .mainbody-header-icon {
+            padding-left: 8px;
+            padding-right: 15px;
+        }
+
+        .webix_item_tab.webix_hover .mainbody-inbox-header {
+            color: black;
+            background-color: #F2F2F2;
+        }
+
+        .webix_item_tab.webix_selected .mainbody-inbox-header {
+            color: red;
+        }
+
+        .webix_item_tab.webix_selected:hover .mainbody-inbox-header {}
+
+
+
+        .webix_item_tab.webix_hover .mainbody-social-header {
+            color: black;
+            background-color: #F2F2F2;
+        }
+
+        .webix_item_tab.webix_selected .mainbody-social-header {
+            color: #1F73E8;
+        }
+
+        .webix_item_tab.webix_selected:hover .mainbody-social-header {}
+
+
+        .webix_item_tab.webix_hover .mainbody-promotions-header {
+            color: black;
+            background-color: #F2F2F2;
+        }
+
+        .webix_item_tab.webix_selected .mainbody-promotions-header {
+            color: #258D40;
+        }
+
+        .webix_item_tab.webix_selected:hover .mainbody-promotions-header {}
+
+
+        .webix_item_tab.webix_hover .mainbody-updates-header {
+            color: black;
+            background-color: #F2F2F2;
+        }
+
+        .webix_item_tab.webix_selected .mainbody-updates-header {
+            color: #FA7A1A;
+        }
+
+        .webix_item_tab.webix_selected:hover .mainbody-updates-header {}
+
+        .orange-star {
+            color: #FA7A1A;
+        }
+
+        .grey-star {
+            color: #C0C0C0;
+        }
+
+        .large-icon {
+            font-size: 20px;
+        }
+
+        .body-row-background {
+            background-color: #E2E8EA;
+        }
+
+        .body-row-hover {
+            z-index: 50;
+            color: black !important;
+            background-color: white;
+        }
+
+        .bodyrow-time {
+            text-align: right;
         }
     </style>
 </head>
 
 <body>
     <script type="text/javascript" charset="utf-8">
+        var bodyData = [
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: true,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: true,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: true,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: true,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: true,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: true,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+            {
+                star: false,
+                from: "Madhu",
+                subject: "Hello all,People working form home today:Please login below to check the details.Click here Cheers,Tigersheet.com Team",
+                date: "3:08 PM"
+            },
+        ];
+        // var datatable = webix.ui({
+        //     view: "datatable",
+        //     columns: [
+        //         { id: "rank", header: "", width: 50 },
+        //         { id: "title", header: "Film title", width: 200 },
+        //         { id: "year", header: "Released", width: 80 },
+        //         { id: "votes", header: "Votes", width: 100 }
+        //     ],
+        //     data: [
+        //         { id: 1, title: "The Shawshank Redemption", year: 1994, votes: 678790, rank: 1 },
+        //         { id: 2, title: "The Godfather", year: 1972, votes: 511495, rank: 2 }
+        //     ]
+        // });
+
+        //     var appHeader = {
+        //     cols: [
+        //         { view: "button", value: "Mail", width: 200 },
+        //         { view: "button", type: "iconButton", icon: "check-square-o", width: 50 },
+        //         { view: "button", type: "iconButton", icon: "history", width: 50 },
+        //         { view: "button", value: "More:", width: 90 },
+        //         {},
+        //         { view: "label", label: "<b>1-50</b> of <b>2300</b> ", align: "right" },
+        //         paging,
+        //         { view: "button", type: "iconButton", icon: "arrows-alt", width: 50 }
+        //     ]
+        // };
+
+
         var header = {
-            template: "Header1",
             height: 62,
-            css: "app-header"
+            css: "app-header",
+            cols: [
+                { template: "logo", gravity: 0.2, borderless: true },
+                { template: "search bar", gravity: 0.6, borderless: true },
+                { template: "header menu", gravity: 0.2, borderless: true }
+            ]
         };
         var composeButton = {
             view: "button",
@@ -69,60 +313,104 @@
         var leftnavbarlist = {
             view: "tree",
             borderless: true,
-            template: "{common.icon()}<div class='list-item'><span class='webix_icon wxi-pencil' />&nbsp;&nbsp;&nbsp;#value#</div>",
+            template: "{common.icon()}<div class='list-item'><span class='#icon#' />&nbsp;&nbsp;&nbsp;#value#</div>",
             select: true,
             data: [
-                { id: "1", value: "Inbox" },
-                { id: "2", value: "Starred" },
-                { id: "3", value: "Snoozed" },
-                { id: "4", value: "Sent" },
-                { id: "5", value: "Drafts" },
-                { id: "6", value: "Important" },
-                { id: "7", value: "Chats" },
-                { id: "8", value: "All Mails" },
-                { id: "9", value: "Spam" },
-                { id: "10", value: "Trash" },
+                { id: "1", icon: "fas fa-inbox", value: "Inbox" },
+                { id: "2", icon: "fas fa-star", value: "Starred" },
+                { id: "3", icon: "fas fa-clock", value: "Snoozed" },
+                { id: "4", icon: "fas fa-share-square", value: "Sent" },
+                { id: "5", icon: "fas fa-star", value: "Drafts" },
+                { id: "6", icon: "fas fa-file", value: "Important" },
+                { id: "7", icon: "fas fa-comments", value: "Chats" },
+                { id: "8", icon: "fas fa-envelope", value: "All Mails" },
+                { id: "9", icon: "fas fa-exclamation-triangle", value: "Spam" },
+                { id: "10", icon: "fas fa-trash", value: "Trash" },
                 {
-                    id: "11", open: true, value: "Categories", data: [
-                        { id: "11.1", value: "Avalon" },
-                        { id: "11.2", value: "Corolla" },
-                        { id: "11.3", value: "Camry" }
+                    id: "11", value: "Categories", data: [
+                        { id: "11.1", value: "Social" },
+                        { id: "11.2", value: "Updates" },
+                        { id: "11.3", value: "Forums" },
+                        { id: "11.4", value: "Promotions" }
                     ]
                 },
             ]
         };
-        var primarybody = { template: "welcome" };
+        var leftnavbar = { rows: [composeButton, leftnavbarlist], gravity: 0.2, borderless: true, padding: 10, margin: 10 };
+
+        var filter = {
+            height: 45,
+            cols: [
+                { view: "button", value: "Mail", width: 200 },
+                { view: "button", type: "iconButton", icon: "check-square-o", width: 50 },
+                { view: "button", type: "iconButton", icon: "history", width: 50 },
+                { view: "button", value: "More:", width: 90 },
+                {},
+                { view: "label", label: "<b>1-50</b> of <b>2300</b> ", align: "right" },
+                { view: "button", type: "iconButton", icon: "arrows-alt", width: 50 }
+            ]
+        };
+
+        var primarybody = {
+            view: "datatable",
+            scroll: "y",
+            scheme: {
+                $change: function (item) {
+                    item.$css = "body-row-background";
+                }
+            },
+            hover: "body-row-hover",
+            columns: [
+                { id: "check", template: "{common.checkbox()}", width: 40 },
+                {
+                    id: "star", template: function (obj) {
+                        console.log(obj.star ? "fas fa-start" : "far fa-star");
+                        return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
+                    }, width: 40
+                },
+                { id: "from", width: 150 },
+                { id: "subject", fillspace: true },
+                { id: "date", width: 100, css: "bodyrow-time" }
+            ],
+            header: false,
+            data: bodyData
+        };
         var socialbody = { template: "social" };
         var promotionsbody = { template: "promotions" };
         var updatesbody = { template: "updates" };
-        var leftnavbar = { rows: [composeButton, leftnavbarlist], gravity: 0.2, borderless: true, css: "leftside-bar", padding: 10, margin: 10 };
         var mainbody = {
             view: "tabview",
-            gravity: 0.80,
+            gravity: 0.75,
             cells: [
                 {
-                    header: "Primary",
+                    header: "<div class='mainbody-inbox-header'><i class='mainbody-header-icon fas fa-inbox'></i>Primary</div>",
                     body: { rows: [primarybody] }
                 },
                 {
-                    header: "Social",
+                    header: "<div class='mainbody-social-header'><i class='mainbody-header-icon fas fa-users'></i>Social</div>",
                     body: { rows: [socialbody] }
                 },
                 {
-                    header: "Promotions",
+                    header: "<div class='mainbody-promotions-header'><i class='mainbody-header-icon fas fa-tag'></i>Promotions</div>",
                     body: { rows: [promotionsbody] }
                 },
                 {
-                    header: "Updates",
+                    header: "<div class='mainbody-updates-header'><i class='mainbody-header-icon fas fa-info-circle'></i>Updates</div>",
                     body: { rows: [updatesbody] }
                 },
             ]
         };
-        var rightnavbar = { template: "RightSide menu", gravity: 0.05, css: "rightside-bar" };
+        var middlebody = {
+            rows: [
+                filter,
+                mainbody
+            ]
+        };
+        var rightnavbar = { template: "RightSide menu", gravity: 0.05 };
         var body = {
             cols: [
                 leftnavbar,
-                mainbody,
+                middlebody,
                 rightnavbar
             ]
         };
