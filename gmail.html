@@ -119,6 +119,13 @@
         .bodyrow-time {
             text-align: right;
         }
+        .custom-search {
+            border: none !important;
+        }
+        .webix_el_box input {
+           border: none;
+           background: transparent; 
+        }
     </style>
 </head>
 
@@ -290,17 +297,6 @@
         //         { view: "button", type: "iconButton", icon: "arrows-alt", width: 50 }
         //     ]
         // };
-
-
-        var header = {
-            height: 62,
-            css: "app-header",
-            cols: [
-                { template: "logo", gravity: 0.2, borderless: true },
-                { template: "search bar", gravity: 0.6, borderless: true },
-                { template: "header menu", gravity: 0.2, borderless: true }
-            ]
-        };
         var composeButton = {
             view: "button",
             type: "icon",
@@ -340,15 +336,7 @@
 
         var filter = {
             height: 45,
-            cols: [
-                { view: "button", value: "Mail", width: 200 },
-                { view: "button", type: "iconButton", icon: "check-square-o", width: 50 },
-                { view: "button", type: "iconButton", icon: "history", width: 50 },
-                { view: "button", value: "More:", width: 90 },
-                {},
-                { view: "label", label: "<b>1-50</b> of <b>2300</b> ", align: "right" },
-                { view: "button", type: "iconButton", icon: "arrows-alt", width: 50 }
-            ]
+            template: "filter"
         };
 
         var primarybody = {
@@ -375,9 +363,78 @@
             header: false,
             data: bodyData
         };
-        var socialbody = { template: "social" };
-        var promotionsbody = { template: "promotions" };
-        var updatesbody = { template: "updates" };
+        var socialbody = {
+            view: "datatable",
+            scroll: "y",
+            scheme: {
+                $change: function (item) {
+                    item.$css = "body-row-background";
+                }
+            },
+            hover: "body-row-hover",
+            columns: [
+                { id: "check", template: "{common.checkbox()}", width: 40 },
+                {
+                    id: "star", template: function (obj) {
+                        console.log(obj.star ? "fas fa-start" : "far fa-star");
+                        return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
+                    }, width: 40
+                },
+                { id: "from", width: 150 },
+                { id: "subject", fillspace: true },
+                { id: "date", width: 100, css: "bodyrow-time" }
+            ],
+            header: false,
+            data: bodyData
+        };
+        var promotionsbody = {
+            view: "datatable",
+            scroll: "y",
+            scheme: {
+                $change: function (item) {
+                    item.$css = "body-row-background";
+                }
+            },
+            hover: "body-row-hover",
+            columns: [
+                { id: "check", template: "{common.checkbox()}", width: 40 },
+                {
+                    id: "star", template: function (obj) {
+                        console.log(obj.star ? "fas fa-start" : "far fa-star");
+                        return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
+                    }, width: 40
+                },
+                { id: "from", width: 150 },
+                { id: "subject", fillspace: true },
+                { id: "date", width: 100, css: "bodyrow-time" }
+            ],
+            header: false,
+            data: bodyData
+        };
+        var updatesbody = {
+            view: "datatable",
+            scroll: "y",
+            scheme: {
+                $change: function (item) {
+                    item.$css = "body-row-background";
+                }
+            },
+            hover: "body-row-hover",
+            columns: [
+                { id: "check", template: "{common.checkbox()}", width: 40 },
+                {
+                    id: "star", template: function (obj) {
+                        console.log(obj.star ? "fas fa-start" : "far fa-star");
+                        return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
+                    }, width: 40
+                },
+                { id: "from", width: 150 },
+                { id: "subject", fillspace: true },
+                { id: "date", width: 100, css: "bodyrow-time" }
+            ],
+            header: false,
+            data: bodyData
+        };
         var mainbody = {
             view: "tabview",
             gravity: 0.75,
@@ -407,6 +464,18 @@
             ]
         };
         var rightnavbar = { template: "RightSide menu", gravity: 0.05 };
+
+        var header = {
+            height: 62,
+            cols: [
+                { gravity: 0.16, borderless: true, view: "button", value: "GMAIL" },
+                { view: "search", placeholder: "Search", gravity: 0.4 },
+                { template: "", gravity: 0.24 },
+                { template: "header menu", gravity: 0.2, borderless: true }
+            ],
+            borderless: true
+        };
+
         var body = {
             cols: [
                 leftnavbar,
