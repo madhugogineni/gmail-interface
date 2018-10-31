@@ -3,141 +3,11 @@
 
 <head>
     <link rel="stylesheet" href="https://cdn.webix.com/edge/webix.css" type="text/css">
+    <link rel="stylesheet" href="gmail.css">
     <script src="https://cdn.webix.com/edge/webix.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
         crossorigin="anonymous">
-    <style>
-        .app-header {}
 
-        .rightside-bar {
-            width: 5%;
-        }
-
-        .list-item {
-            border-top-right-radius: 5%;
-            border-bottom-right-radius: 5%;
-        }
-
-        .list-item:hover {
-            background: #FCE7E5;
-        }
-
-        .compose-button {
-            border-radius: 20px;
-            padding-left: 10px;
-        }
-
-        .custom-button {
-            background: white !important;
-            color: black !important;
-        }
-
-        .webix_item_tab .mainbody-inbox-header,
-        .mainbody-social-header,
-        .mainbody-promotions-header,
-        .mainbody-updates-header {
-            color: #696969;
-            text-align: left;
-            padding-left: 8px;
-        }
-
-        .webix_item_tab .mainbody-header-icon {
-            padding-left: 8px;
-            padding-right: 15px;
-        }
-
-        .webix_item_tab.webix_hover .mainbody-inbox-header {
-            color: black;
-            background-color: #F2F2F2;
-        }
-
-        .webix_item_tab.webix_selected .mainbody-inbox-header {
-            color: red;
-        }
-
-        .webix_item_tab.webix_selected:hover .mainbody-inbox-header {}
-
-
-
-        .webix_item_tab.webix_hover .mainbody-social-header {
-            color: black;
-            background-color: #F2F2F2;
-        }
-
-        .webix_item_tab.webix_selected .mainbody-social-header {
-            color: #1F73E8;
-        }
-
-        .webix_item_tab.webix_selected:hover .mainbody-social-header {}
-
-
-        .webix_item_tab.webix_hover .mainbody-promotions-header {
-            color: black;
-            background-color: #F2F2F2;
-        }
-
-        .webix_item_tab.webix_selected .mainbody-promotions-header {
-            color: #258D40;
-        }
-
-        .webix_item_tab.webix_selected:hover .mainbody-promotions-header {}
-
-
-        .webix_item_tab.webix_hover .mainbody-updates-header {
-            color: black;
-            background-color: #F2F2F2;
-        }
-
-        .webix_item_tab.webix_selected .mainbody-updates-header {
-            color: #FA7A1A;
-        }
-
-        .webix_item_tab.webix_selected:hover .mainbody-updates-header {}
-
-        .orange-star {
-            color: #FA7A1A;
-        }
-
-        .grey-star {
-            color: #C0C0C0;
-        }
-
-        .large-icon {
-            font-size: 20px;
-        }
-
-        .body-row-background {
-            background-color: #E2E8EA;
-        }
-
-        .body-row-hover {
-            z-index: 50;
-            color: black !important;
-            background-color: white;
-        }
-
-        .bodyrow-time {
-            text-align: right;
-        }
-
-        .custom-search {
-            border: none !important;
-        }
-
-        .webix_el_box input {
-            border: none;
-            background: #e2e8ea;
-            height: 40px;
-            width: 40%;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            margin-right: 5%;
-        }
-
-        .webix_el_box input:focus {
-            background: white;
-        }
-    </style>
 </head>
 
 <body>
@@ -282,32 +152,6 @@
                 date: "3:08 PM"
             },
         ];
-        // var datatable = webix.ui({
-        //     view: "datatable",
-        //     columns: [
-        //         { id: "rank", header: "", width: 50 },
-        //         { id: "title", header: "Film title", width: 200 },
-        //         { id: "year", header: "Released", width: 80 },
-        //         { id: "votes", header: "Votes", width: 100 }
-        //     ],
-        //     data: [
-        //         { id: 1, title: "The Shawshank Redemption", year: 1994, votes: 678790, rank: 1 },
-        //         { id: 2, title: "The Godfather", year: 1972, votes: 511495, rank: 2 }
-        //     ]
-        // });
-
-        //     var appHeader = {
-        //     cols: [
-        //         { view: "button", value: "Mail", width: 200 },
-        //         { view: "button", type: "iconButton", icon: "check-square-o", width: 50 },
-        //         { view: "button", type: "iconButton", icon: "history", width: 50 },
-        //         { view: "button", value: "More:", width: 90 },
-        //         {},
-        //         { view: "label", label: "<b>1-50</b> of <b>2300</b> ", align: "right" },
-        //         paging,
-        //         { view: "button", type: "iconButton", icon: "arrows-alt", width: 50 }
-        //     ]
-        // };
         var composeButton = {
             view: "button",
             type: "icon",
@@ -347,7 +191,13 @@
 
         var filter = {
             height: 45,
-            template: "filter"
+            cols: [
+                { view: "checkbox", width: 40 },
+                { template: "", width: 5 },
+                { template: "<i class='fas fa-redo'></i>", width: 40 },
+                { template: "", fillspace: true }
+            ],
+            css: "body-filter"
         };
 
         var primarybody = {
@@ -363,7 +213,7 @@
                 { id: "check", template: "{common.checkbox()}", width: 40 },
                 {
                     id: "star", template: function (obj) {
-                        console.log(obj.star ? "fas fa-start" : "far fa-star");
+                        console.log("<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='");
                         return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
                     }, width: 40
                 },
@@ -387,9 +237,10 @@
                 { id: "check", template: "{common.checkbox()}", width: 40 },
                 {
                     id: "star", template: function (obj) {
-                        console.log(obj.star ? "fas fa-start" : "far fa-star");
+                        console.log(obj.star ? "fas fa-star" : "far fa-star");
                         return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
-                    }, width: 40
+                    },
+                    width: 40
                 },
                 { id: "from", width: 150 },
                 { id: "subject", fillspace: true },
@@ -411,7 +262,8 @@
                 { id: "check", template: "{common.checkbox()}", width: 40 },
                 {
                     id: "star", template: function (obj) {
-                        console.log(obj.star ? "fas fa-start" : "far fa-star");
+                        // console.log(obj.star ? "fas fa-star" : "far fa-star");
+                        console.log(obj.star ? "orange-star" : "grey-star");
                         return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
                     }, width: 40
                 },
@@ -435,7 +287,6 @@
                 { id: "check", template: "{common.checkbox()}", width: 40 },
                 {
                     id: "star", template: function (obj) {
-                        console.log(obj.star ? "fas fa-start" : "far fa-star");
                         return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
                     }, width: 40
                 },
@@ -452,7 +303,8 @@
             cells: [
                 {
                     header: "<div class='mainbody-inbox-header'><i class='mainbody-header-icon fas fa-inbox'></i>Primary</div>",
-                    body: { rows: [primarybody] }
+                    body: { rows: [primarybody] },
+                    css: "header-inbox"
                 },
                 {
                     header: "<div class='mainbody-social-header'><i class='mainbody-header-icon fas fa-users'></i>Social</div>",
@@ -474,15 +326,49 @@
                 mainbody
             ]
         };
-        var rightnavbar = { template: "RightSide menu", gravity: 0.05 };
+        var rightnavbar = {
+            rows: [
+                { template: "<img src='calendar-icon.png'/>" },
+                { template: "<img src='keep-icon.png'/>" },
+                { template: "<img src='task-icon.png'/>" },
+                { template: "<img src='plus-icon.png'/>" },
+            ],
+            gravity: 0.05,
+            css: "right-navbar"
+        };
 
         var header = {
-            height: 62,
+            height: 80,
             cols: [
-                { gravity: 0.16, borderless: true, view: "button", value: "GMAIL" },
-                { view: "search", placeholder: "Search", gravity: 0.6 },
-                { template: "", gravity: 0.04 },
-                { template: "header menu", gravity: 0.2, borderless: true }
+                {
+                    rows: [{
+                        cols: [
+                            { template: "", gravity: 0.1 },
+                            { template: "<span class='fas fa-bars fa-2x' />", gravity: 0.2, borderless: true },
+                            { view: "button", type: "image", image: "gmail-icon.png", gravity: 0.5, borderless: true },
+                            { template: "", gravity: 0.2 }
+                        ]
+                    }],
+                    gravity: 0.16,
+                    css: "header-left",
+                    borderless: true
+                },
+                { view: "search", placeholder: "Search Gmail", gravity: 0.5, css: "custom-search", padding: 10 },
+                { template: "", gravity: 0.18 },
+                {
+                    rows: [{
+                        cols: [
+                            { template: "", gravity: 0.05 },
+                            { template: "<span class='fas fa-th fa-2x' />", gravity: 0.2, borderless: true },
+                            { template: "<span class='fas fa-bell fa-2x' />", gravity: 0.2, borderless: true },
+                            { view: "button", value: "riktam", gravity: 0.5, borderless: true, css: "header-riktam-account" },
+                            { tempalte: "", gravity: 0.05 }
+                        ]
+                    }],
+                    gravity: 0.16,
+                    css: "top-padding",
+                    borderless: true
+                }
             ],
             borderless: true
         };
