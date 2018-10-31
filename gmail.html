@@ -119,12 +119,23 @@
         .bodyrow-time {
             text-align: right;
         }
+
         .custom-search {
             border: none !important;
         }
+
         .webix_el_box input {
-           border: none;
-           background: transparent; 
+            border: none;
+            background: #e2e8ea;
+            height: 40px;
+            width: 40%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-right: 5%;
+        }
+
+        .webix_el_box input:focus {
+            background: white;
         }
     </style>
 </head>
@@ -469,8 +480,8 @@
             height: 62,
             cols: [
                 { gravity: 0.16, borderless: true, view: "button", value: "GMAIL" },
-                { view: "search", placeholder: "Search", gravity: 0.4 },
-                { template: "", gravity: 0.24 },
+                { view: "search", placeholder: "Search", gravity: 0.6 },
+                { template: "", gravity: 0.04 },
                 { template: "header menu", gravity: 0.2, borderless: true }
             ],
             borderless: true
