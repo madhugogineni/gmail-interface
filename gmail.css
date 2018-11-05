@@ -4,23 +4,61 @@
     width: 5%;
 }
 
-.list-item {
+.leftnavbar .list-item {
     border-top-right-radius: 5%;
     border-bottom-right-radius: 5%;
 }
 
-.list-item:hover {
-    background: #FCE7E5;
+.leftnavbar .webix_tree_item {
+    height: 30px !important;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.compose-button {
-    border-radius: 20px;
+.leftnavbar .webix_tree_item {
+    border-top-right-radius: 20px !important;
+    border-bottom-right-radius: 20px !important;
+}
+
+.leftnavbar .webix_tree_item:hover {
+    background: #F3F7F7;
+}
+
+.leftnavbar .webix_tree_item.webix_selected .list-item {
+    background: #F3F7F7;
+    color: black !important;
+}
+
+.leftnavbar .compose-button .webix_img_btn {
+    border-radius: 25px;
+    z-index: 50px;
+    box-shadow: 1px 1px 1px 1px #696969;
     padding-left: 10px;
+    font-size: 20px !important;
+}
+
+.leftnavbar .compose-button .webix_el_box {
+    height: 70px !important;
+    width: 60% !important;
+}
+
+.leftnavbar .compose-button {
+    height: 70px !important;
 }
 
 .custom-button {
     background: white !important;
     color: black !important;
+}
+
+.middlebody .webix_view.webix_control.webix_el_tabbar {
+    height: 60px !important;
+}
+
+.middlebody .webix_all_tabs .webix_item_tab {
+    padding-top: 20px;
+    padding-bottom: 20px !important;
 }
 
 .webix_item_tab .mainbody-inbox-header, .mainbody-social-header, .mainbody-promotions-header, .mainbody-updates-header {
@@ -169,7 +207,7 @@
 }
 
 .header-left .webix_image {
-    width: 100% !important;
+    width: 80% !important;
     height: 100% !important;
 }
 
@@ -192,8 +230,15 @@
     margin-top: 10px;
 }
 
-.webix_column {
-    font-size: 20px;
+.middlebody .webix_column:hover {
+    cursor: pointer !important;
+}
+
+.middlebody .webix_column .webix_cell.body-row-background {
+    font-size: 18px;
+    color: black;
+    height: 60px !important;
+    padding-top: 10px;
 }
 
 .body-filter .webix_view.webix_control.webix_el_checkbox {
@@ -202,4 +247,43 @@
 
 .body-filter .webix_template .fa-redo {
     margin-top: 10px;
+}
+
+.body-filter .webix_view {
+    border-width: 0px !important;
+}
+
+.contacts-list .webix_list_item {
+    height: 50px !important;
+    font-size: 20px;
+}
+
+.chats-list .webix_list_item {
+    height: 50px !important;
+    font-size: 20px;
+}
+
+.red-circle-margin {
+    margin-top: 20px;
+}
+
+.inline-block-div {
+    display: inline-block;
+    padding-top: -20px;
+}
+
+.webix_list_item {
+    padding: none !important;
+}
+
+.chat-window .webix_win_body .popup-header {
+    padding-top: 10px;
+    background: #A9A9A9;
+}
+
+.chat-window .webix_win_body .name, .cross-button, .arrow-button, .minimize-button {
+    font-size: 18px;
+    background: #A9A9A9;
+    border: none !important;
+    color: black;
 }

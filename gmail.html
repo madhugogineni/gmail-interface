@@ -12,6 +12,8 @@
 
 <body>
     <script type="text/javascript" charset="utf-8">
+        var popups = [];
+        var chatName;
         var bodyData = [
             {
                 star: false,
@@ -152,15 +154,126 @@
                 date: "3:08 PM"
             },
         ];
+        var contacts = [
+            {
+                id: 1,
+                name: "Madhu"
+            },
+            {
+                id: 2,
+                name: "Nikhil"
+            },
+            {
+                id: 3,
+                name: "Teja"
+            },
+            {
+                id: 4,
+                name: "Chaitanya"
+            },
+            {
+                id: 5,
+                name: "Anurag"
+            }
+        ];
+        var chats = [
+            {
+                name: "Anurag"
+            },
+            {
+                name: "Nikhil"
+            },
+            {
+                name: "Teja"
+            },
+            {
+                name: "Chaitanya"
+            },
+            {
+                name: "Madhu"
+            }
+        ];
         var composeButton = {
             view: "button",
-            type: "icon",
-            icon: "fas fa-plus",
+            type: "image",
+            image: "coloured-plus.png",
             label: "Compose",
-            css: "button_raised",
+            css: "compose-button",
             height: 50,
             inputWidth: 120
         };
+
+        var contactsList = {
+            view: "list",
+            width: 250,
+            height: 200,
+            template: "<svg class='welcome' height='30' width='30'><div class='inline-block-div welcome'>#name#</div>",
+            select: true,
+            data: contacts,
+            css: "contacts-list",
+            onClick: {
+                "welcome": function (ev, id, name) {
+                    webix.ui({
+                        view: "popup",
+                        id: id,
+                        width: 300,
+                        height: 400,
+                        top: 600,
+                        left: 1500,
+                        head: "welcome",
+                        body: {
+                            rows: [popupHeader, popupBodyList, popupInput]
+                        },
+                        css: "chat-window",
+                    }).show();
+                    return false; // blocks the default click behavior
+                }
+            }
+        };
+        var chatsList = {
+            view: "list",
+            width: 250,
+            height: 200,
+            template: "<svg class='welcome' height='30' width='30'><div class='inline-block-div welcome'>#name#</div>",
+            data: chats,
+            css: "chats-list",
+            onClick: {
+                "welcome": function (ev, id, name) {
+                    webix.ui({
+                        view: "popup",
+                        id: id,
+                        width: 300,
+                        height: 400,
+                        top: 550,
+                        left: 1400,
+                        head: "welcome",
+                        body: {
+                            rows: [popupHeader, popupBodyList, popupInput]
+                        },
+                        css: "chat-window",
+                    }).show();
+                    return false; // blocks the default click behavior
+                }
+            }
+        };
+        var popupHeader = {
+            cols: [
+                { template: "Madhu", gravity: 1, css: "name" },
+                { template: "", fillspace: true },
+                { template: "<span class='fas fa-minus'></span>", width: 30, css: "minimize-button" },
+                { template: "<span class='fas fa-location-arrow'></span>", width: 40, css: "arrow-button" },
+                { template: "<span class='fas fa-times'></span>", width: 30, css: "cross-button" }
+            ],
+            css: "popup-header",
+            height: 40,
+        };
+        var popupBodyList = {
+            template: "Messages List here"
+        }
+        var popupInput = {
+            view: "text",
+            placeholder: "Enter your message here"
+        }
         var leftnavbarlist = {
             view: "tree",
             borderless: true,
@@ -187,7 +300,31 @@
                 },
             ]
         };
-        var leftnavbar = { rows: [composeButton, leftnavbarlist], gravity: 0.2, borderless: true, padding: 10, margin: 10 };
+        var bottomTabs = {
+            type: "clean",
+            rows: [
+                {
+                    animate: false,
+                    cells: [
+                        { id: "a1", rows: [contactsList] },
+                        { id: "a2", rows: [chatsList] },
+                    ]
+                },
+                {
+                    view: "tabbar",
+                    value: "a100",
+                    type: "bottom",
+                    tabMinWidth: 50,
+                    multiview: true,
+                    options: [
+                        { id: "a1", value: "<span class='webix_icon fa-user'></span>" },
+                        { id: "a2", value: "<span class='webix_icon fa-user'></span>" },
+                    ]
+                }
+            ],
+            css: "bottom-tab"
+        };
+        var leftnavbar = { rows: [composeButton, leftnavbarlist, bottomTabs], gravity: 0.2, borderless: true, padding: 10, margin: 10, css: "leftnavbar" };
 
         var filter = {
             height: 45,
@@ -213,7 +350,7 @@
                 { id: "check", template: "{common.checkbox()}", width: 40 },
                 {
                     id: "star", template: function (obj) {
-                        console.log("<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='");
+                        //                        console.log("<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='");
                         return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
                     }, width: 40
                 },
@@ -237,7 +374,7 @@
                 { id: "check", template: "{common.checkbox()}", width: 40 },
                 {
                     id: "star", template: function (obj) {
-                        console.log(obj.star ? "fas fa-star" : "far fa-star");
+                        //console.log(obj.star ? "fas fa-star" : "far fa-star");
                         return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
                     },
                     width: 40
@@ -263,7 +400,7 @@
                 {
                     id: "star", template: function (obj) {
                         // console.log(obj.star ? "fas fa-star" : "far fa-star");
-                        console.log(obj.star ? "orange-star" : "grey-star");
+                        //console.log(obj.star ? "orange-star" : "grey-star");
                         return "<div class='" + (obj.star ? "orange-star" : "grey-star") + "'><span class='" + (obj.star ? "fas fa-star" : "far fa-star") + "'></span></div>"
                     }, width: 40
                 },
@@ -318,7 +455,8 @@
                     header: "<div class='mainbody-updates-header'><i class='mainbody-header-icon fas fa-info-circle'></i>Updates</div>",
                     body: { rows: [updatesbody] }
                 },
-            ]
+            ],
+            css: "middlebody"
         };
         var middlebody = {
             rows: [
@@ -381,6 +519,7 @@
             ]
         };
         webix.ui({
+            id: "gmailApplication",
             rows: [
                 header,
                 body
