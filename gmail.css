@@ -35,11 +35,11 @@
     z-index: 50px;
     box-shadow: 1px 1px 1px 1px #696969;
     padding-left: 10px;
-    font-size: 20px !important;
+    font-size: 18px !important;
 }
 
 .leftnavbar .compose-button .webix_el_box {
-    height: 70px !important;
+    height: 60px !important;
     width: 60% !important;
 }
 
@@ -61,60 +61,60 @@
     padding-bottom: 20px !important;
 }
 
-.webix_item_tab .mainbody-inbox-header, .mainbody-social-header, .mainbody-promotions-header, .mainbody-updates-header {
+.webix_item_tab .mails-inbox-header, .mails-social-header, .mails-promotions-header, .mails-updates-header {
     color: #696969;
     text-align: left;
     padding-left: 8px;
 }
 
-.webix_item_tab .mainbody-header-icon {
+.webix_item_tab .mails-header-icon {
     padding-left: 8px;
     padding-right: 15px;
 }
 
-.webix_item_tab.webix_hover .mainbody-inbox-header {
+.webix_item_tab.webix_hover .mails-inbox-header {
     color: black;
     background-color: #F2F2F2;
 }
 
-.webix_item_tab.webix_selected .mainbody-inbox-header {
+.webix_item_tab.webix_selected .mails-inbox-header {
     color: red;
 }
 
-.webix_item_tab.webix_selected:hover .mainbody-inbox-header {}
+.webix_item_tab.webix_selected:hover .mails-inbox-header {}
 
-.webix_item_tab.webix_hover .mainbody-social-header {
+.webix_item_tab.webix_hover .mails-social-header {
     color: black;
     background-color: #F2F2F2;
 }
 
-.webix_item_tab.webix_selected .mainbody-social-header {
+.webix_item_tab.webix_selected .mails-social-header {
     color: #1F73E8;
 }
 
-.webix_item_tab.webix_selected:hover .mainbody-social-header {}
+.webix_item_tab.webix_selected:hover .mails-social-header {}
 
-.webix_item_tab.webix_hover .mainbody-promotions-header {
+.webix_item_tab.webix_hover .mails-promotions-header {
     color: black;
     background-color: #F2F2F2;
 }
 
-.webix_item_tab.webix_selected .mainbody-promotions-header {
+.webix_item_tab.webix_selected .mails-promotions-header {
     color: #258D40;
 }
 
-.webix_item_tab.webix_selected:hover .mainbody-promotions-header {}
+.webix_item_tab.webix_selected:hover .mails-promotions-header {}
 
-.webix_item_tab.webix_hover .mainbody-updates-header {
+.webix_item_tab.webix_hover .mails-updates-header {
     color: black;
     background-color: #F2F2F2;
 }
 
-.webix_item_tab.webix_selected .mainbody-updates-header {
+.webix_item_tab.webix_selected .mails-updates-header {
     color: #FA7A1A;
 }
 
-.webix_item_tab.webix_selected:hover .mainbody-updates-header {}
+.webix_item_tab.webix_selected:hover .mails-updates-header {}
 
 .orange-star {
     color: #FA7A1A !important;
@@ -207,7 +207,7 @@
 }
 
 .header-left .webix_image {
-    width: 80% !important;
+    width: 100% !important;
     height: 100% !important;
 }
 
@@ -225,8 +225,7 @@
 
 .right-navbar .webix_template {
     align-items: center;
-    border-bottom: none !important;
-    padding-left: 15px !important;
+    padding-left: 13% !important;
     margin-top: 10px;
 }
 
@@ -237,8 +236,9 @@
 .middlebody .webix_column .webix_cell.body-row-background {
     font-size: 18px;
     color: black;
-    height: 60px !important;
-    padding-top: 10px;
+    height: 45px !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .body-filter .webix_view.webix_control.webix_el_checkbox {
@@ -254,26 +254,24 @@
 }
 
 .contacts-list .webix_list_item {
-    height: 50px !important;
-    font-size: 20px;
+    height: 35px !important;
+    font-size: 16px;
+    padding: none !important;
 }
 
 .chats-list .webix_list_item {
-    height: 50px !important;
-    font-size: 20px;
+    height: 45px !important;
+    font-size: 16px;
+    padding: none !important;
 }
 
 .red-circle-margin {
     margin-top: 20px;
 }
 
-.inline-block-div {
-    display: inline-block;
-    padding-top: -20px;
-}
-
-.webix_list_item {
-    padding: none !important;
+.inline-block-div { 
+    height: 10px;
+    padding-bottom: 5px;
 }
 
 .chat-window .webix_win_body .popup-header {

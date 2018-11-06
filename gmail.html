@@ -178,18 +178,23 @@
         ];
         var chats = [
             {
+                id: "ch1",
                 name: "Anurag"
             },
             {
+                id: "ch2",
                 name: "Nikhil"
             },
             {
+                id: "ch3",
                 name: "Teja"
             },
             {
+                id: "ch4",
                 name: "Chaitanya"
             },
             {
+                id: "ch5",
                 name: "Madhu"
             }
         ];
@@ -207,7 +212,7 @@
             view: "list",
             width: 250,
             height: 200,
-            template: "<svg class='welcome' height='30' width='30'><div class='inline-block-div welcome'>#name#</div>",
+            template: "<div class='inline-block-div welcome'>#name#</div>",
             select: true,
             data: contacts,
             css: "contacts-list",
@@ -220,7 +225,6 @@
                         height: 400,
                         top: 600,
                         left: 1500,
-                        head: "welcome",
                         body: {
                             rows: [popupHeader, popupBodyList, popupInput]
                         },
@@ -234,24 +238,29 @@
             view: "list",
             width: 250,
             height: 200,
-            template: "<svg class='welcome' height='30' width='30'><div class='inline-block-div welcome'>#name#</div>",
+            template: "<div class='inline-block-div welcome1'>#name#</div><div class='inline-block-div welcome1'>last message</div>",
             data: chats,
             css: "chats-list",
             onClick: {
-                "welcome": function (ev, id, name) {
-                    webix.ui({
+                "welcome1": function (ev, id, name) {
+                    console.log("id name =" + id + " " + name);
+                    var node = $$('gmailApplication');
+                    console.log("node is");
+                    console.log(node);
+                    var popup = webix.ui({
                         view: "popup",
-                        id: id,
+                        id: "chatwindow-" + id,
                         width: 300,
-                        height: 400,
-                        top: 550,
-                        left: 1400,
-                        head: "welcome",
+                        height: 200,
+                        disable: true,
                         body: {
                             rows: [popupHeader, popupBodyList, popupInput]
                         },
                         css: "chat-window",
-                    }).show();
+                    }).show(
+                        $$("spacer").$view, { pos: "bottom" }
+                    );//
+
                     return false; // blocks the default click behavior
                 }
             }
@@ -324,7 +333,7 @@
             ],
             css: "bottom-tab"
         };
-        var leftnavbar = { rows: [composeButton, leftnavbarlist, bottomTabs], gravity: 0.2, borderless: true, padding: 10, margin: 10, css: "leftnavbar" };
+        var leftnavbar = { id: "leftnavbar", rows: [composeButton, leftnavbarlist, bottomTabs], gravity: 0.2, borderless: true, padding: 10, margin: 10, css: "leftnavbar" };
 
         var filter = {
             height: 45,
@@ -434,25 +443,25 @@
             header: false,
             data: bodyData
         };
-        var mainbody = {
+        var mails = {
             view: "tabview",
             gravity: 0.75,
             cells: [
                 {
-                    header: "<div class='mainbody-inbox-header'><i class='mainbody-header-icon fas fa-inbox'></i>Primary</div>",
+                    header: "<div class='mails-inbox-header'><i class='mails-header-icon fas fa-inbox'></i>Primary</div>",
                     body: { rows: [primarybody] },
                     css: "header-inbox"
                 },
                 {
-                    header: "<div class='mainbody-social-header'><i class='mainbody-header-icon fas fa-users'></i>Social</div>",
+                    header: "<div class='mails-social-header'><i class='mails-header-icon fas fa-users'></i>Social</div>",
                     body: { rows: [socialbody] }
                 },
                 {
-                    header: "<div class='mainbody-promotions-header'><i class='mainbody-header-icon fas fa-tag'></i>Promotions</div>",
+                    header: "<div class='mails-promotions-header'><i class='mails-header-icon fas fa-tag'></i>Promotions</div>",
                     body: { rows: [promotionsbody] }
                 },
                 {
-                    header: "<div class='mainbody-updates-header'><i class='mainbody-header-icon fas fa-info-circle'></i>Updates</div>",
+                    header: "<div class='mails-updates-header'><i class='mails-header-icon fas fa-info-circle'></i>Updates</div>",
                     body: { rows: [updatesbody] }
                 },
             ],
@@ -461,15 +470,17 @@
         var middlebody = {
             rows: [
                 filter,
-                mainbody
+                mails
             ]
         };
         var rightnavbar = {
+            id: "rightnavbar",
             rows: [
                 { template: "<img src='calendar-icon.png'/>" },
                 { template: "<img src='keep-icon.png'/>" },
                 { template: "<img src='task-icon.png'/>" },
                 { template: "<img src='plus-icon.png'/>" },
+                { id: "spacer",template: "", fillspace: true }
             ],
             gravity: 0.05,
             css: "right-navbar"
@@ -481,10 +492,10 @@
                 {
                     rows: [{
                         cols: [
-                            { template: "", gravity: 0.1 },
+                            { template: "", gravity: 0.05 },
                             { template: "<span class='fas fa-bars fa-2x' />", gravity: 0.2, borderless: true },
                             { view: "button", type: "image", image: "gmail-icon.png", gravity: 0.5, borderless: true },
-                            { template: "", gravity: 0.2 }
+                            { template: "", gravity: 0.1 }
                         ]
                     }],
                     gravity: 0.16,
@@ -512,6 +523,7 @@
         };
 
         var body = {
+            id: "body",
             cols: [
                 leftnavbar,
                 middlebody,
